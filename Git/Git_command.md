@@ -53,14 +53,23 @@ git push <저장소 이름> <브랜치 이름>
   삭제
 
 # 9. git branch
-1. git branch   
-   브랜치 생성    
+  
+1. git branch name   
+   name 브랜치 생성    
 2. git checkout   
    브랜치 이동
    * -b   
       브랜치를 만들면서 이동
 3. git branch -d {대상}   
    브랜치 삭제
+4. git branch   
+   정보
+5. -a   
+   로컬/리모트 저장소의 branch
+6. -r   
+   리모트 저장소의 branch
+7. -m   
+  이름 변경
 
 # 10. git merge
 마스터로 이동 후 마스터 브랜치에 합침
