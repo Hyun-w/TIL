@@ -1,19 +1,25 @@
-import 'dart:async';
-
-Stream<String> cal(int n) async*{
-  for(int i=0;i<5;i++){
-      yield 'i= $i';
-      await Future.delayed(Duration(seconds:1));
-  }
-}
-
-void playStream(){
-  cal(1).listen((val){
-      print(val);
-  });
-}
+import 'package:flutter/material.dart';
 
 void main(){
-  playStream();
-  
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text(
+            'code F',
+            style: TextStyle(
+              fontSize: 16.0,
+              fontWeight: FontWeight.w700,
+              color: Colors.blue,
+            )
+          )
+          ),
+          ),
+    );
+  }
 }
