@@ -168,12 +168,12 @@
                 width: 100.0,
             )
 
-2. SizeBox 위젯
+2. SizedBox 위젯
     * 일정 크기의 공간을 여백으로 두고 싶을 때 사용
     * Container 위젯을 사용해도 동일한 효과를 얻을 수 있음
-    * SizeBox 위젯의 경우 const 생성자를 사용하여 퍼포먼스 이점을 얻을 수 있음
+    * SizedBox 위젯의 경우 const 생성자를 사용하여 퍼포먼스 이점을 얻을 수 있음
    
-            SizeBox(            
+            SizedBox(            
                 height: 200.0,
                 width: 100.0,
                 child: Container(
@@ -249,7 +249,101 @@
 # 5. 배치 관련 위젯
 * 가로 또는 세로로 배치하거나 위젯 위에 위젯을 겹칠 때 사용
 1. Row 위젯
+   * 위젯을 가로로 배치
+   * 가로가 main 축, 세로가 cross 축
+   * children 
+
+            import 'package:flutter/material.dart';
+
+            void main(){
+            runApp(RowWidgetExample());
+            }
+
+            class RowWidgetExample extends StatelessWidget {
+            @override
+            Widget build(BuildContext context){
+                return MaterialApp(
+                home: Scaffold(
+                    body: SizedBox(
+                    height: double.infinity,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                        Container(
+                            height: 50.0,
+                            width: 50.0,
+                            color: Colors.red,
+                        ),
+                        const SizedBox(width: 12.0),
+                        Container(
+                            height: 50.0,
+                            width: 50.0,
+                            color: Colors.green,
+                        ),
+                        const SizedBox(width: 12.0,),
+                        Container(
+                            height: 50.0,
+                            width: 50.0,
+                            color: Colors.blue,
+                        ),
+                        ],
+                    ),
+                    ),
+                    ),
+                );
+            }
+            }
+
+   * MainAxisAlignment 옵션
+        1. .start : 시작에 정렬
+        2. .center : 중앙에 정렬
+        3. .end : 끝에 정렬
+        4. .spaceBetween : 자식 위젯 간의 간격을 균등하게 정렬
+        5. .spaceAround : 균등하게 배정하고 양끝을 간격의 반만큼 배정해 정렬
+        6. .spaceEvenly : 양끝과 위젯의 간격을 균등하게 정렬
+   
+    * CrossAxisAlignment 옵션
+        1. .start : 시작에 정렬
+        2. .center : 중앙에 정렬
+        3. .end : 끝에 정렬
+        4. .stretch : 반대축 최대한 늘려서 정렬
+
 2. Column 위젯
+    * Row 위젯의 매개변수와 동일하나, 하나 주축과 반대축이 반대
+  
 3. Flexible 위젯
+   * Row나 Column 위젯 안에 사용 하는 위젯
+   * Flexible 위젯의 child가 얼만큼의 공간을 차지할지 지정가능
+   * flex: 1 이 Default
+   * fit: FlexFit.tight 남은 공간 전부 차지
+   * fit: FlexFit.loose 자신이 필요한 공간만 차지
+    
+            Column(
+                children:[
+                    Flexible(
+                        flex: 1, //default 1
+                        child: Container(
+                            color: Colors.blue,
+                        ),
+                    ),
+                    Flexible(
+                        child:
+                        Container(
+                            color: Colors.red,
+                        ),
+                    )
+                ],
+
+            ),
+  * Flexible 이 필요한 이유
+  * children 위젯 은 앞부터 공간이 할당되어 뒤 위젯의 공간이 부족해 에러가 날수 있음
+  * Flexible을 적절히 활용하면 이를 방지할수 있음
 4. Expanded 위젯
+    * Flexible 위젯을 상속하는 위젯
+    * fit: FlexFit.tight가 기본값
+    * Flexible과 마찬가지로 flex매개변수의 값에 따라 비율 조절 가능
 5. Stack 위젯
+   * 위젯을 겹치는 기능
+   * 두께감 X, 위젯위에 위젯을 올린 느낌 O 
+   * 코드상 앞 위젯부터 밑에 깔림
