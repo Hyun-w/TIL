@@ -151,6 +151,7 @@
 * 배경을 추가하거나 간격을 추가하거나 패딩을 추가하는 등 디자인적 요소를 적용할때 사용
 1. Container 위젯
     * 다른 위젯을 담는 용도
+    * 배경 관련 UI를 변경할 때 주로 사용
     * 위젯의 높이나 너비를 지정하거나 배경이나 테두리를 추가할 때 사용
   
             Container(
@@ -168,6 +169,7 @@
                 width: 100.0,
             )
 
+    * decoration 이라는 네임드 파라미터 제공, 이 매개변수에는 BoxDecoration이라는 클래스를 사용, BoxDecoration의 매개변수를 통해 배경색, 테두리 색, 테두리 두께등 UI요소 지정
 2. SizedBox 위젯
     * 일정 크기의 공간을 여백으로 두고 싶을 때 사용
     * Container 위젯을 사용해도 동일한 효과를 얻을 수 있음
@@ -249,7 +251,7 @@
 # 5. 배치 관련 위젯
 * 가로 또는 세로로 배치하거나 위젯 위에 위젯을 겹칠 때 사용
 1. Row 위젯
-   * 위젯을 가로로 배치
+   * 위젯을 가로로 배치, 가로로 최대한 차지, 세로로 최소한 차지
    * 가로가 main 축, 세로가 cross 축
    * children 
 
@@ -347,3 +349,14 @@
    * 위젯을 겹치는 기능
    * 두께감 X, 위젯위에 위젯을 올린 느낌 O 
    * 코드상 앞 위젯부터 밑에 깔림
+
+
+# 6. Stateful vs Stateless
+    * stateful 위젯 : 위젯 내부에서 값이 변경되었을 때 위젯 자치에서 다시 렌더링을 실행 시킬수 있음
+    * stateless 위젯 : 위젯 내부에서 값이 변경되도 다시 렌더링이 불가능
+
+# 7. 로딩 애니메이션 위젯
+    * LinerProgressIndicator : 일자 형태로
+    * CircularProgressIndicator : 동그라미 형태로
+    * 둘다 backgrondColor와 valueColor 매개변수 제공
+    * valueColor의 경우 AlwaysStoppedAnimation(Colors.white) 처럼 클래스에 감싸서 색 제공
