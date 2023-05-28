@@ -62,6 +62,10 @@
       double? num1 = null;
       double? num2;//자동으로 null      
 
+* null assertion 연산자 !   
+ null type의 변수를 선언하고 이 변수에는 절대로 null이 대입되지 않는 다고 확신할 경우   
+ 변수! 를 사용
+
 * ??를 사용하여 null일때만 값 저장 가능
 
       num1 ??= 3;//3 할당

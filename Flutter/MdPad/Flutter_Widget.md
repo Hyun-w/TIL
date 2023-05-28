@@ -352,11 +352,31 @@
 
 
 # 6. Stateful vs Stateless
-    * stateful 위젯 : 위젯 내부에서 값이 변경되었을 때 위젯 자치에서 다시 렌더링을 실행 시킬수 있음
-    * stateless 위젯 : 위젯 내부에서 값이 변경되도 다시 렌더링이 불가능
+   * stateful 위젯 : 위젯 내부에서 값이 변경되었을 때 위젯 자치에서 다시 렌더링을 실행 시킬수 있음
+   * stateless 위젯 : 위젯 내부에서 값이 변경되도 다시 렌더링이 불가능
 
 # 7. 로딩 애니메이션 위젯
-    * LinerProgressIndicator : 일자 형태로
-    * CircularProgressIndicator : 동그라미 형태로
-    * 둘다 backgrondColor와 valueColor 매개변수 제공
-    * valueColor의 경우 AlwaysStoppedAnimation(Colors.white) 처럼 클래스에 감싸서 색 제공
+   * LinerProgressIndicator : 일자 형태로
+   * CircularProgressIndicator : 동그라미 형태로
+   * 둘다 backgrondColor와 valueColor 매개변수 제공
+   * valueColor의 경우 AlwaysStoppedAnimation(Colors.white) 처럼 클래스에 감싸서 색 제공
+
+# 8. 웹뷰 위젯
+   * 웹뷰는 프레임워크에 내장된 브라우저를 앱의 네이티브 컴포넌트에 임베딩 하는 기능
+   * 앱에서 웹브라우저 기능을 구현
+   * 네이티브에 비해 속도가 느리고 애니메이션이 부자연스러우나 기존에 만든 웹사이트를 손쉽게 재사용 가능
+   * 결제 모듈을 PG(Patment Gateway) 사에서 웹으로 이미 기능을 구현해두었기 떄문에 웹뷰를 사용하면 추가 결제 기능을 개발할 필요가 없음
+   * 웹 뷰의 속성 들
+        1. initialUrl : 웹부에서 처음 실행할 사이트를 String 값으로 제공, 웹뷰가 포함된 위젯이 화면에 생성되면 웹뷰가 생성되고 해당 사이트가 처음으로 실행됨
+        2. javascriptMode : 웹뷰에서 자바스크립트 실행을 허용할지 여부를 결정
+            * .unrestricted: 자바 스크립트를 제한없이 실행
+            * .disabled : 자바 스크립트 실행 불가
+        3. onWebViewCreated : 웹뷰 위젯이 생성되면 실행할 콜백 함수, 매개변수로 WebViewController가 주어져 뒤로가기 앞으로가기 새로운 Url 실행하기등 기능을 조작
+        4. onPageStarted : 웹뷰가 처음 생성되거나 페이지를 이동했을 때, 웹페이지가 로딩되기 시작하면 실행할 콜백함수, 매개변수로 로딩이 시작된 페이지의 URL이 String 으로 제공
+        5. onPageFinished : 웹페이지 로딩이 끝나면 실행, 로딩이 완료된 웹페이지의 URL이 String 형으로 제공
+        6. onProgress : 페이지가 로딩중 일때 지속적으로 실행되며, 매개변수에 int 값으로 0~100 까지 페이지 로딩 상태를 제공
+
+   * 안드로이드 설정 
+
+         <uses-permisson android:name="android.permission.INTERNET" />
+   * android/app/build.gradle 에서 android.compileSdkVersion 32, minSdkVersion 20
