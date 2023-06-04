@@ -57,3 +57,9 @@ Timer의 생성자는 Timer()//일회성 , Timer.periodic()//주기적 두가지
 * 다이얼로그 위젯 위의 흐림처리 된 부분을 barrier 라고 부름
 * barrierDismissible가 true 이면 barrier 를 눌렀을때 다이얼로그가 닫힘
 * builder()함수에 다이얼로그에 띄우고 싶은 위젯을 return 해주면 댐
+
+# 5. .of 생성자
+.of(context) 생성자는 BuildContext를 매개변수로 받고 위젯 트리에서 가장 가까이에 있는 객체의 값을 찾아냄
+
+* MediaQuery.of(context)는 현재 위젯트리에서 가장 각까이에 있는 MediaQuery값을 찾아냄
+* 앱이 실행되면 MaterialApp이 빌드됨과 동시에 MediaQuery가 생성
