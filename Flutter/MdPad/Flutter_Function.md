@@ -63,3 +63,6 @@ Timer의 생성자는 Timer()//일회성 , Timer.periodic()//주기적 두가지
 
 * MediaQuery.of(context)는 현재 위젯트리에서 가장 각까이에 있는 MediaQuery값을 찾아냄
 * 앱이 실행되면 MaterialApp이 빌드됨과 동시에 MediaQuery가 생성
+
+# 6. TickerProviderMixin과 vsync
+수직동기화
