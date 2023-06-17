@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:video_player/video_player.dart';
+import 'package:vid_player/component/custom_icon_button.dart';
 import 'dart:io';
 
 class CustomVideoPlayer extends StatefulWidget{
   final XFile video;    
-  
-  const CustomVideoPlayer({
+  final GestureTapCallback onNewVideoPressed;
+
+  const CustomVideoPlayer({    
     required this.video,
+    required this.onNewVideoPressed,
     Key? key,
   }):super(key: key);
 
@@ -16,12 +19,20 @@ class CustomVideoPlayer extends StatefulWidget{
 }
 
 class _CustomVideoPlayerState extends State<CustomVideoPlayer>{
+  bool showControls = false;  
   VideoPlayerController? videoController;
 
   @override
+  void didUpdateWidget(covariant CustomVideoPlayer oldWidget){
+    super.didUpdateWidget(oldWidget);
+    if(oldWidget.video.path != widget.video.path){
+      initializeController();
+    }
+  }
+
+  @override
   void initState(){
-    super.initState();
-    
+    super.initState();    
   }
 
   initializeController() async {
@@ -30,10 +41,23 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>{
     );
 
     await videoController.initialize();
+    
+    videoController.addListener(videoControllerListener);
 
     setState(() {
       this.videoController = videoController;
     });
+  }
+
+  void videoControllerListener(){
+    setState(() {
+      
+    });
+  }
+  @override
+  void dispose(){
+    videoController?.removeListener(videoControllerListener);
+    super.dispose();
   }
 
   @override
@@ -43,12 +67,111 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>{
         child: CircularProgressIndicator(),
       );
     }
-
-    return AspectRatio(
-      aspectRatio: videoController!.value.aspectRatio,
-      child: VideoPlayer(
-        videoController!
+    return GestureDetector(
+      onTap: (){
+        setState(() {
+          showControls = !showControls;
+        });
+      },
+      child: AspectRatio(
+        aspectRatio: videoController!.value.aspectRatio,
+        child: Stack(
+          children: [
+            VideoPlayer(
+              videoController!
+            ),
+            if(showControls)
+              Container(color: Colors.black.withOpacity(0.5),),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                child: Row(
+                  children: [
+                    renderTimeTextDuration(videoController!.value.position),
+                    Expanded(
+                      child: Slider(
+                        onChanged: (double val) {
+                          videoController!.seekTo(
+                            Duration(seconds: val.toInt()),
+                          );
+                        },
+                        value: videoController!.value.position.inSeconds.toDouble(),
+                        min: 0,
+                        max: videoController!.value.duration.inSeconds.toDouble(),
+                      ),
+                    ),
+                    renderTimeTextDuration(videoController!.value.duration),
+                  ],
+                ),
+              ),              
+            ),
+            if(showControls)
+              Align(
+                alignment: Alignment.topRight,
+                child: CustomIconButton(
+                  onPressed: widget.onNewVideoPressed,
+                  iconData: Icons.photo_camera_back,
+                ),
+              ),
+            if(showControls)
+              Align(
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    CustomIconButton(iconData: Icons.rotate_left, onPressed: onReversePressed),
+                    CustomIconButton(iconData: videoController!.value.isPlaying ? Icons.pause : Icons.play_arrow, onPressed: onPlayPressed),
+                    CustomIconButton(iconData: Icons.rotate_right, onPressed: onForwardPressed),
+                  ],
+                ),
+              ),
+          ],
         ),
-      );
+      ),
+    );    
+  }
+
+  Widget renderTimeTextDuration(Duration duration){
+    return Text(
+      '${duration.inMinutes.toString().padLeft(2,'0')}:${(duration.inSeconds%60).toString().padLeft(2,'0')}',
+      style: TextStyle(
+        color: Colors.white,
+      ),
+    );
+  }
+
+  void onReversePressed() {
+    final currentPosition = videoController!.value.position;
+
+    Duration position = Duration();
+
+    if(currentPosition.inSeconds>3){
+      position = currentPosition - Duration(seconds: 3);
+    }
+    videoController!.seekTo(position);
+  }
+
+  void onForwardPressed() {
+    final maxPosition = videoController!.value.duration;
+    final currentPosition = videoController!.value.position;
+
+    Duration position = maxPosition;
+
+    if((maxPosition - Duration(seconds: 3)).inSeconds > currentPosition.inSeconds) {
+      position = currentPosition+Duration(seconds: 3);
+    }
+
+    videoController!.seekTo(position);
+  }
+
+  void onPlayPressed(){
+    if(videoController!.value.isPlaying){
+      videoController!.pause();
+    }else{
+      videoController!.play();
+    }
   }
 }

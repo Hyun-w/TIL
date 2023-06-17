@@ -63,7 +63,8 @@ class _HomeScreenState extends State<HomeScreen>{
   Widget renderVideo(){
     return Container(
       child: CustomVideoPlayer(
-        video: video!,
+        video: video!,        
+        onNewVideoPressed: onNewVideoPressed,
       ),
     );
   }
