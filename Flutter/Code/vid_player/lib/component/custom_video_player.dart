@@ -33,6 +33,7 @@ class _CustomVideoPlayerState extends State<CustomVideoPlayer>{
   @override
   void initState(){
     super.initState();    
+    initializeController();
   }
 
   initializeController() async {
