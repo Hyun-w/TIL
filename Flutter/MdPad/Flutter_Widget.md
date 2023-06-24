@@ -380,3 +380,18 @@
 
          <uses-permisson android:name="android.permission.INTERNET" />
    * android/app/build.gradle 에서 android.compileSdkVersion 32, minSdkVersion 20
+
+# 9. GestureDetector
+
+   * 플러터에서 지원하는 모든 제스처들을 구현하는 위젯
+
+    onTap : 한번 탭
+    onDoubleTap : 더블 탭
+    onLongPress : 길게 누를 때
+    onScale : 확대
+    onVerticalDragStart : 수직 드래그가 시작 되었을 때
+    onVerticalDragEnd : 수직 드래그가 끝났을 때
+    onHorizontalDragStart : 수평 드래그가 시작 되엇을 때
+    onHorizontalDragEnd : 수평 드래그가 끝났을 때
+    onPanStart : 드래그가 시작됐을 때
+    onPanEnd : 드래그가 끝났을 때
