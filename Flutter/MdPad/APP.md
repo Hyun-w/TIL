@@ -92,3 +92,6 @@
               <key>NSAllowsArbitraryLoadsInWebContent</key>
               <true/>
             </dict>
+
+# 4. pubspec.yaml
+dev_dependencies의 경우 dependencies와 달리 개발시에만 사용되고 앱패키징엔 포함되지 않음
