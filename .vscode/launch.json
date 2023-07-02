@@ -1,0 +1,268 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "blog_webview_app",
+            "cwd": "Flutter\\Code\\blog_webview_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "blog_webview_app (profile mode)",
+            "cwd": "Flutter\\Code\\blog_webview_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "blog_webview_app (release mode)",
+            "cwd": "Flutter\\Code\\blog_webview_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "calendar_schedular",
+            "cwd": "Flutter\\Code\\calendar_schedular",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "calendar_schedular (profile mode)",
+            "cwd": "Flutter\\Code\\calendar_schedular",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "calendar_schedular (release mode)",
+            "cwd": "Flutter\\Code\\calendar_schedular",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "cf_tube",
+            "cwd": "Flutter\\Code\\cf_tube",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "cf_tube (profile mode)",
+            "cwd": "Flutter\\Code\\cf_tube",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "cf_tube (release mode)",
+            "cwd": "Flutter\\Code\\cf_tube",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "chool_check",
+            "cwd": "Flutter\\Code\\chool_check",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "chool_check (profile mode)",
+            "cwd": "Flutter\\Code\\chool_check",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "chool_check (release mode)",
+            "cwd": "Flutter\\Code\\chool_check",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "flutter_application_1",
+            "cwd": "Flutter\\Code\\flutter_application_1",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "flutter_application_1 (profile mode)",
+            "cwd": "Flutter\\Code\\flutter_application_1",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "flutter_application_1 (release mode)",
+            "cwd": "Flutter\\Code\\flutter_application_1",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "image_carousel",
+            "cwd": "Flutter\\Code\\image_carousel",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "image_carousel (profile mode)",
+            "cwd": "Flutter\\Code\\image_carousel",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "image_carousel (release mode)",
+            "cwd": "Flutter\\Code\\image_carousel",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "image_editor",
+            "cwd": "Flutter\\Code\\image_editor",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "image_editor (profile mode)",
+            "cwd": "Flutter\\Code\\image_editor",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "image_editor (release mode)",
+            "cwd": "Flutter\\Code\\image_editor",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "random_dice",
+            "cwd": "Flutter\\Code\\random_dice",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "random_dice (profile mode)",
+            "cwd": "Flutter\\Code\\random_dice",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "random_dice (release mode)",
+            "cwd": "Flutter\\Code\\random_dice",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "splash_screen",
+            "cwd": "Flutter\\Code\\splash_screen",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "splash_screen (profile mode)",
+            "cwd": "Flutter\\Code\\splash_screen",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "splash_screen (release mode)",
+            "cwd": "Flutter\\Code\\splash_screen",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "u_and_i",
+            "cwd": "Flutter\\Code\\u_and_i",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "u_and_i (profile mode)",
+            "cwd": "Flutter\\Code\\u_and_i",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "u_and_i (release mode)",
+            "cwd": "Flutter\\Code\\u_and_i",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "video_call",
+            "cwd": "Flutter\\Code\\video_call",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "video_call (profile mode)",
+            "cwd": "Flutter\\Code\\video_call",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "video_call (release mode)",
+            "cwd": "Flutter\\Code\\video_call",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "vid_call",
+            "cwd": "Flutter\\Code\\vid_call",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "vid_call (profile mode)",
+            "cwd": "Flutter\\Code\\vid_call",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "vid_call (release mode)",
+            "cwd": "Flutter\\Code\\vid_call",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        },
+        {
+            "name": "vid_player",
+            "cwd": "Flutter\\Code\\vid_player",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "vid_player (profile mode)",
+            "cwd": "Flutter\\Code\\vid_player",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "vid_player (release mode)",
+            "cwd": "Flutter\\Code\\vid_player",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

@@ -14,14 +14,15 @@ class MainCalendar extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return TableCalendar(
+      locale: 'ko_kr',
       onDaySelected: onDaySelected,
       selectedDayPredicate: (date)=>
-        date.year == selectedDate.year &&
-        date.month == selectedDate.month &&
-        date.day == selectedDate.day,
+        (date.year == selectedDate.year) &&
+        (date.month == selectedDate.month) &&
+        (date.day == selectedDate.day),
       focusedDay: DateTime.now(), 
-      firstDay: DateTime(1800,1,1), 
-      lastDay: DateTime(3000,1,1),
+      firstDay: DateTime(2020,1,1), 
+      lastDay: DateTime(2030,1,1),
       headerStyle: HeaderStyle(
         titleCentered: true,
         formatButtonVisible: false,
