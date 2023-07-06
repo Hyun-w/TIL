@@ -395,3 +395,25 @@
     onHorizontalDragEnd : 수평 드래그가 끝났을 때
     onPanStart : 드래그가 시작됐을 때
     onPanEnd : 드래그가 끝났을 때
+
+
+
+# 10. Dismissible 위젯
+위젯을 밀어서 삭제하는 기능을 제공   
+Dismissible 위젯으로 감싸고 onDismissed와 key 매개변수를 입력해주면 됨
+
+    Dismissible(
+        key: Objectkey(schedule.id), // 유니크한 키값
+        direction: DismissDirection.endToStart, // 밀기 방향 (오른쪽에서 왼쪽)
+        onDismissed: (DismissDirection direction){}, // 밀기를 실행했을 때 실행할 함수
+        child:Container(),// 밀어서 삭제하기 구현할 위젯
+    );
+
+DismissDirection 값
+1. vertical: 세로로
+2. horizontal: 가로로
+3. endToStart: 우에서 좌
+4. startToEnd: 좌에서 우
+5. up: 아래에서 위로만
+6. down: 위에서 아래로만
+7. none: 어떠한 제시처도 허가하지 않음
