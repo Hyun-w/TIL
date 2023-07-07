@@ -22,7 +22,8 @@
     1. flutter pub get : pubspec.yaml 파일에 등록한 플러그인을 내려받음
     2. flutter pub add [플러그인이름] : pubspec.yaml에 플러그인을 추가
     3. flutter pub upgrade : pubspec.yaml에 등록된 플러그인들을 모두 최신버전으로 업데이트
-    4. flutter pub run : 현재 프로젝트를 실행합니다. 어떤 플랫폼에서 실행할지 선택 가능
+    4. flutter pub upgrade --major-versions : 최신버전으로 업데이트
+    5. flutter pub run : 현재 프로젝트를 실행합니다. 어떤 플랫폼에서 실행할지 선택 가능
    
 * 주변장치 종류
   * 센서 : sensors_plus
