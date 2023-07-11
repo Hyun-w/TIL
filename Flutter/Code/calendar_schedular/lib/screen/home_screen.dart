@@ -7,15 +7,10 @@ import "package:flutter/material.dart";
 import 'package:get_it/get_it.dart';
 import 'package:calendar_schedular/database/drift_database.dart';
 import 'package:calendar_schedular/component/today_banner.dart';
+import 'package:provider/provider.dart';
+import 'package:calendar_schedular/provider/schedule_provider.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}):super(key: key);
-
-  @override
-  State<HomeScreen> createState()=>_HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreen extends StatelessWidget {
   DateTime selectedDate = DateTime.utc(
     DateTime.now().year,
     DateTime.now().month,
@@ -24,6 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context){
+    final provider = context.watch<ScheduleProvider>();
+    final selectedDate = provider.selectedDate;
+    final schedules = provider.cache[selectedDate] ?? [];
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: PRIMARY_COLOR,
@@ -46,52 +45,39 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             MainCalendar(
               selectedDate: selectedDate,
-              onDaySelected: onDaySelected,
+              onDaySelected: (selectedDate,focusedDate)=>onDaySelected(selectedDate, focusedDate, context),
             ),
             SizedBox(height: 8.0,),
-            StreamBuilder<List<Schedule>>(
-              stream: GetIt.I<LocalDatabase>().watchSchedules(selectedDate),
-              builder: (context, snapshot) {
-                return TodayBanner(selectedDate: selectedDate, count: snapshot.data?.length ?? 0,);
-              },
-            ),            
+            TodayBanner(selectedDate: selectedDate, count: schedules.length),
             SizedBox(height: 8.0,),
             Expanded(
-              child: StreamBuilder<List<Schedule>>(
-                stream: GetIt.I<LocalDatabase>().watchSchedules(selectedDate),
-                builder: (context,snapshot){                
-                  if(!snapshot.hasData){
-                    return Container();
-                  }
-                  return ListView.builder(
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      final schedule = snapshot.data![index];
-                      return Dismissible(
-                        key: ObjectKey(schedule.id),
-                        direction: DismissDirection.startToEnd,
-                        onDismissed: (DismissDirection direction){
-                          GetIt.I<LocalDatabase>().removeSchedule(schedule.id);
-                        },
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0,left: 8.0, right: 8.0,),
-                          child: ScheduleCard(startTime: schedule.startTime, endTime: schedule.endTime, content: schedule.content),
-                        )
-                      );
-                    },                      
-                  );                
-                },
+              child: ListView.builder(
+                itemCount: schedules.length,
+                itemBuilder: (context, index) {
+                  final schedule = schedules[index];
+                  return Dismissible(
+                    key: ObjectKey(schedule.id),
+                    direction: DismissDirection.startToEnd,
+                    onDismissed: (DismissDirection direction){
+                      provider.deleteSchedule(date: selectedDate, id: schedule.id);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(bottom: 8.0,left: 8.0, right: 8.0,),
+                      child: ScheduleCard(startTime: schedule.startTime, endTime: schedule.endTime, content: schedule.content),
+                    )
+                  );
+                },                      
               ),
-            ),            
+            ),
           ],
         ),
       ),
     );
   }
 
-  void onDaySelected(DateTime selectedDate, DateTime focusedDate){
-    setState(() {
-      this.selectedDate = selectedDate;      
-    });
+  void onDaySelected(DateTime selectedDate, DateTime focusedDate, BuildContext context){
+    final provider = context.read<ScheduleProvider>();
+    provider.changeSelectedDate(date: selectedDate);
+    provider.getSchedules(date: selectedDate);
   }
 }
