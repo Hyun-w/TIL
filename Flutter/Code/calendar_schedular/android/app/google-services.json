@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "515483904388",
+    "project_id": "calendar-scheduler-hw0708",
+    "storage_bucket": "calendar-scheduler-hw0708.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515483904388:android:58c49bcd8a26b52880d5d1",
+        "android_client_info": {
+          "package_name": "com.example.calendar_schedular"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515483904388-77srqgfukdb91tchodldtms2si0em710.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBidiBoK8DbOIOZ2zBbDR5xmumPxvwios"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515483904388-77srqgfukdb91tchodldtms2si0em710.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
