@@ -8,24 +8,22 @@ import 'package:calendar_schedular/repository/schedule_repository.dart';
 import 'package:calendar_schedular/provider/schedule_provider.dart';
 import 'package:provider/provider.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:calendar_schedular/firebase_options.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  
   await initializeDateFormatting();
 
-  final database = LocalDatabase();
-
-  GetIt.I.registerSingleton<LocalDatabase>(database);
-
-  final repository = ScheduleRepository();
-  final scheduleProvider = ScheduleProvider(repository: repository);  
-
   runApp(
-    ChangeNotifierProvider(
-      create: (_) =>scheduleProvider,
-      child: MaterialApp(
-        home: HomeScreen(),
-      ),
-    ),    
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomeScreen(),
+    )
   );
 }
