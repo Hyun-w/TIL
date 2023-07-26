@@ -4,6 +4,7 @@ import "package:calendar_schedular/component/schedule_card.dart";
 import "package:calendar_schedular/component/today_banner.dart";
 import "package:calendar_schedular/const/colors.dart";
 import 'package:calendar_schedular/model/schedule_model.dart';
+import 'package:calendar_schedular/screen/banner_ad_widget.dart';
 import "package:flutter/material.dart";
 import 'package:get_it/get_it.dart';
 import 'package:calendar_schedular/database/drift_database.dart';
@@ -88,8 +89,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     .map((QueryDocumentSnapshot e) => ScheduleModel.fromJson(
                       json: (e.data() as Map<String, dynamic>))).toList();
                   
-                  return ListView.builder(                    
+                  return ListView.separated(                    
                     itemCount: schedules.length,
+                    separatorBuilder: (context, index) {
+                      return BannerAdWidget();
+                    },                    
                     itemBuilder: (context, index) {
                       final schedule = schedules[index];
                       return Dismissible(
