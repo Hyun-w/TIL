@@ -96,3 +96,35 @@
 
 # 4. pubspec.yaml
 dev_dependencies의 경우 dependencies와 달리 개발시에만 사용되고 앱패키징엔 포함되지 않음
+
+
+# 5. 앱 이름과 아이콘 설정 방법
+
+1. 안드로이드 앱 이름
+
+    android/app/src/main/AndroidManifest.xml 파일
+
+    android:label="앱 이름"
+
+2. iOS 앱 이름
+
+    ios/Runner/Info.plist 파일
+
+    <key>CFBundleName</key>
+    <string>앱 이름</string>
+
+3. 앱 아이콘 설정
+
+        pubspec.yaml
+
+        dev_dependencies:
+
+        fluuter_launcher_icons: 0.10.0
+
+        flutter_icons:
+          android: true
+          ios: true
+          image_path: "아이콘 파일 위치"
+
+    아이콘 파일 위치를 지정한 다음   
+    flutter pub run flutter_launcher_icons:main 을 실행    
