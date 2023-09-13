@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget{
               IconButton(onPressed: null, icon: Icon(Icons.login)),
               IconButton(onPressed: null, icon: Icon(Icons.shopping_bag_outlined)),
             ],
-            flexibleSpace: const SizedBox(height: 32.0,width: 16.0,child: Text('Flexible')),
+            flexibleSpace: const SizedBox(height: 32.0, width: 16.0, child: Text('Flexible')),
             bottom: TabBar(
               tabs: <Widget>[
                 Tab(
