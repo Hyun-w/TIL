@@ -1,0 +1,21 @@
+# 코드
+
+    #include <string>
+    #include <vector>
+
+    using namespace std;
+
+    string solution(vector<string> cards1, vector<string> cards2, vector<string> goal) {
+        int cnt1=0; int cnt2=0;
+        for(auto str:goal){
+            if(str==cards1[cnt1]) cnt1++;
+            else if(str==cards2[cnt2]) cnt2++;
+            else return "No";
+        }
+        return "Yes";        
+    }
+
+# 피드백
+
+    초기엔 재귀를 통해 풀려고 하였으나 시간초과가 발생하였다.
+    조건을 보니 서로 다른 단어만 존재한다고 명시되어 있음을 확인 후 Dp를 고려안해도 됨을 알았다.
